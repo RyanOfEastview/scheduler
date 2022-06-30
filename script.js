@@ -1,18 +1,17 @@
-var $currentDay = $("#currentDay");
+var $today = $("#today");
 var $timeBlocks = $(".time-block");
 var $scheduleArea = $(".schedule");
 
+
+
 var toDoItems = [];
-//
  
 var currentDate = moment().format("dddd, MMMM Do");
 var currentHour = moment().format("H");
 
-//
 function initializeSchedule(){
 
-
-//Time Blocks
+  //Time Blocks
   $timeBlocks.each(function(){
     var $thisBlock = $(this);
     var thisBlockHr = parseInt($thisBlock.attr("data-hour"));
@@ -27,9 +26,9 @@ function initializeSchedule(){
     toDoItems.push(todoObj);
   });
 
- // save array to local storage after stringifying
-  localStorage.setItem("todos", JSON.stringify(toDoItems));
-  
+  // save array to local storage after stringifying
+    localStorage.setItem("todos", JSON.stringify(toDoItems));
+    
 }
 
 //This section sets the blocks of time to display a colour according to time of day
@@ -56,7 +55,7 @@ function renderSchedule(){
   toDoItems = localStorage.getItem("todos");
   toDoItems = JSON.parse(toDoItems);
 
-  //create for loop to assign text to appropriate text area 
+  //For loop to assign text to hour block
   //creates a new variable where [data-hour={hour}] then insert into $('[data-hour={hour}')
   for (var i = 0; i < toDoItems.length; i++){
     var itemHour = toDoItems[i].hour;
@@ -101,5 +100,7 @@ $(document).ready(function(){
   
   //when input is entered and save button clicked, text remains
   $scheduleArea.on("click", "button", saveHandler);
+
+  $today.text(currentDate);
   
 });
