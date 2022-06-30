@@ -1,11 +1,7 @@
 var $today = $("#today");
 var $timeBlocks = $(".time-block");
 var $scheduleArea = $(".schedule");
-
-
-
 var toDoItems = [];
- 
 var currentDate = moment().format("dddd, MMMM Do");
 var currentHour = moment().format("H");
 
@@ -37,7 +33,7 @@ function setUpTimeBlocks(){
       var $thisBlock = $(this);
       var thisBlockHr = parseInt($thisBlock.attr("data-hour"));
 
-      //This should color the time blocks according to whether or not the time is 'present' or in the past.
+      //This should colour the time blocks according to whether or not the time is 'present' or in the past.
       if (thisBlockHr == currentHour) {
         $thisBlock.addClass("present").removeClass("past future");
       }
@@ -51,7 +47,7 @@ function setUpTimeBlocks(){
 }
 
 function renderSchedule(){
-  
+  //what am I doing wrong?
   toDoItems = localStorage.getItem("todos");
   toDoItems = JSON.parse(toDoItems);
 
